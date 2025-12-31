@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fera & Didi Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:Poppins,sans-serif;
+background:#0f0f0f;
+color:#eee;
+text-align:center;
+}
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.6)),url('https://images.unsplash.com/photo-1523437237164-d442d57cc3c9');
+background-size:cover;
+}
+h1{font-family:Playfair Display}
+.section{padding:60px 20px}
+button{
+padding:14px 28px;
+background:none;
+border:1px solid #fff;
+color:#fff;
+}
+.timer div{display:inline-block;margin:10px}
+iframe{width:100%;height:300px;border:0;filter:grayscale(90%)}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<div>
+<p>The Wedding Of</p>
+<h1>Fera Maulita & Didi Nurhadi</h1>
+<p>10 Januari 2026</p>
+</div>
+</section>
+
+<section class="section">
+<p>QS. Ar-Rum : 21</p>
+</section>
+
+<section class="section">
+<h2>Menuju Hari Bahagia</h2>
+<div class="timer">
+<div><span id="d">0</span><br>Hari</div>
+<div><span id="h">0</span><br>Jam</div>
+<div><span id="m">0</span><br>Menit</div>
+<div><span id="s">0</span><br>Detik</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Lokasi Acara</h2>
+<p>Lapangan Ikram RT 05 RW 04</p>
+<iframe src="https://www.google.com/maps?q=Lapangan%20Ikram&output=embed"></iframe>
+</section>
+
+<script>
+const t=new Date("January 10, 2026").getTime();
+setInterval(()=>{
+let n=new Date().getTime(),d=t-n;
+document.getElementById("d").innerHTML=Math.floor(d/86400000);
+document.getElementById("h").innerHTML=Math.floor(d%86400000/3600000);
+document.getElementById("m").innerHTML=Math.floor(d%3600000/60000);
+document.getElementById("s").innerHTML=Math.floor(d%60000/1000);
+},1000);
+</script>
+
+</body>
+</html>
