@@ -5,7 +5,7 @@
 <title>Fera & Didi Wedding</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -13,46 +13,33 @@ body{
 font-family:'Poppins',sans-serif;
 background:#0b0b0b;
 color:#fff;
-overflow-x:hidden;
 }
 
 .hero{
 height:100vh;
-background:#000;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-position:fixed;
-top:0;left:0;width:100%;
-z-index:999;
+background:#000;
 }
-.hero.hide{display:none}
-
-.hero::after{
-content:'';
-position:absolute;
-inset:0;
-background:rgba(0,0,0,.6);
-}
-.hero-content{position:relative;z-index:2}
 .hero h1{
 font-family:'Playfair Display',serif;
 font-size:3rem;
 }
 .open-btn{
 margin-top:30px;
-padding:14px 32px;
+padding:15px 40px;
 border:1px solid #fff;
 background:transparent;
 color:#fff;
-cursor:pointer;
+font-size:14px;
+letter-spacing:2px;
 }
 
 .section{
 padding:80px 20px;
 text-align:center;
-margin-top:40px;
 }
 .section h2{
 font-family:'Playfair Display',serif;
@@ -85,15 +72,15 @@ margin-top:20px;
 
 <body>
 
-<section class="hero" id="hero">
-  <div class="hero-content">
+<section class="hero">
+  <div>
     <h1>Fera & Didi</h1>
     <p>10 Januari 2026</p>
-    <button class="open-btn" onclick="openInvite()">BUKA UNDANGAN</button>
+    <a href="#acara" class="open-btn">BUKA UNDANGAN</a>
   </div>
 </section>
 
-<section class="section">
+<section id="acara" class="section">
   <h2>Menuju Hari Bahagia</h2>
   <div class="countdown" id="countdown"></div>
 </section>
@@ -105,11 +92,6 @@ margin-top:20px;
 </section>
 
 <script>
-function openInvite(){
-  document.getElementById('hero').classList.add('hide');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
 const target=new Date("2026-01-10T00:00:00").getTime();
 setInterval(()=>{
 const now=new Date().getTime();
