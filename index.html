@@ -15,6 +15,7 @@ background:#0b0b0b;
 color:#fff;
 overflow-x:hidden;
 }
+
 .hero{
 height:100vh;
 background:#000;
@@ -22,39 +23,36 @@ display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-position:relative;
+position:fixed;
+top:0;left:0;width:100%;
+z-index:999;
 }
+.hero.hide{display:none}
+
 .hero::after{
 content:'';
 position:absolute;
 inset:0;
 background:rgba(0,0,0,.6);
 }
-.hero-content{
-position:relative;
-z-index:2;
-}
+.hero-content{position:relative;z-index:2}
 .hero h1{
 font-family:'Playfair Display',serif;
 font-size:3rem;
-letter-spacing:2px;
 }
-.hero p{margin-top:10px;letter-spacing:3px}
-
 .open-btn{
 margin-top:30px;
 padding:14px 32px;
 border:1px solid #fff;
 background:transparent;
 color:#fff;
-font-size:14px;
-letter-spacing:2px;
 cursor:pointer;
 }
 
 .section{
 padding:80px 20px;
 text-align:center;
+margin-top:40px;
 }
 .section h2{
 font-family:'Playfair Display',serif;
@@ -87,43 +85,43 @@ margin-top:20px;
 
 <body>
 
-<section class="hero">
-<div class="hero-content">
-<h1>Fera & Didi</h1>
-<p>10 Januari 2026</p>
-<button class="open-btn">BUKA UNDANGAN</button>
-</div>
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <h1>Fera & Didi</h1>
+    <p>10 Januari 2026</p>
+    <button class="open-btn" onclick="openInvite()">BUKA UNDANGAN</button>
+  </div>
 </section>
 
 <section class="section">
-<h2>Menuju Hari Bahagia</h2>
-<div class="countdown" id="countdown"></div>
+  <h2>Menuju Hari Bahagia</h2>
+  <div class="countdown" id="countdown"></div>
 </section>
 
 <section class="section">
-<h2>Lokasi Acara</h2>
-<p>Lapangan Ikram RT 05 RW 04</p>
-<iframe src="https://www.google.com/maps?q=Lapangan+Ikram&output=embed"></iframe>
+  <h2>Lokasi Acara</h2>
+  <p>Lapangan Ikram RT 05 RW 04</p>
+  <iframe src="https://www.google.com/maps?q=Lapangan+Ikram&output=embed"></iframe>
 </section>
 
 <script>
+function openInvite(){
+  document.getElementById('hero').classList.add('hide');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
 const target=new Date("2026-01-10T00:00:00").getTime();
 setInterval(()=>{
 const now=new Date().getTime();
 const d=target-now;
 if(d<0)return;
-const days=Math.floor(d/(1000*60*60*24));
-const hrs=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-const min=Math.floor((d%(1000*60*60))/(1000*60));
-const sec=Math.floor((d%(1000*60))/1000);
 document.getElementById('countdown').innerHTML=`
-<div>${days}<br>Hari</div>
-<div>${hrs}<br>Jam</div>
-<div>${min}<br>Menit</div>
-<div>${sec}<br>Detik</div>`;
+<div>${Math.floor(d/(1000*60*60*24))}<br>Hari</div>
+<div>${Math.floor((d%(1000*60*60*24))/(1000*60*60))}<br>Jam</div>
+<div>${Math.floor((d%(1000*60*60))/(1000*60))}<br>Menit</div>
+<div>${Math.floor((d%(1000*60))/1000)}<br>Detik</div>`;
 },1000);
 </script>
 
 </body>
 </html>
-
